@@ -1,0 +1,54 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Extract version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Generate keylayouts
+        run: python generate_keylayouts.py
+
+      - name: Build bundle
+        run: python create_bundle.py ${{ steps.version.outputs.version }}
+
+      - name: Build pkg
+        working-directory: build
+
+        run: |
+          BUNDLE="λKeyboard_v${{ steps.version.outputs.version }}.bundle"
+          PKG="LogosKeyboard_v${{ steps.version.outputs.version }}.pkg"
+          pkgbuild \
+            --component "$BUNDLE" \
+            --install-location ~/Library/Keyboard\ Layouts \
+            --identifier io.jazzz.logos-keyboard.keyboardlayouta \
+            --version ${{ steps.version.outputs.version }} \
+            "$PKG"
+
+      - name: Create bundle zip
+        working-directory: build
+        run: |
+          BUNDLE="λKeyboard_v${{ steps.version.outputs.version }}.bundle"
+          zip -r "LogosKeyboard_v${{ steps.version.outputs.version }}.bundle.zip" "$BUNDLE"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/LogosKeyboard_v${{ steps.version.outputs.version }}.pkg
+            build/LogosKeyboard_v${{ steps.version.outputs.version }}.bundle.zip

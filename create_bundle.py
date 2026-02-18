@@ -58,6 +58,9 @@ def build(version):
 
     resources = DIR_OUTPUT / "Resources"
 
+    if not resources.exists():
+        resources.mkdir(parents=True, exist_ok=True)
+
     # Copy each generated keylayout + icon into the bundle
     for keylayout in DIR_LAYOUT.glob("**/*.keylayout"):
         name = keylayout.stem
