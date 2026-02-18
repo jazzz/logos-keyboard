@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-generated:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate keylayouts
+        run: python generate_keylayouts.py
+
+      - name: Ensure generated_layouts is up to date
+        run: |
+          if [ -n "$(git status --porcelain generated_layouts/)" ]; then
+            echo "generated_layouts/ is out of date. Run generate_keylayouts.py and commit the result."
+            git status generated_layouts/
+            exit 1
+          fi
