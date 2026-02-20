@@ -36,7 +36,7 @@ jobs:
           pkgbuild \
             --component "$BUNDLE" \
             --install-location ~/Library/Keyboard\ Layouts \
-            --identifier io.jazzz.logos-keyboard.keyboardlayouta \
+            --identifier io.jazzz.logos-keyboard.keyboardlayout \
             --version ${{ steps.version.outputs.version }} \
             "$PKG"
 
