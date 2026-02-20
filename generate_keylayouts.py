@@ -82,14 +82,15 @@ def write_file(path, root):
 
 if __name__ == "__main__":
 
-    code_map = load_substitution_map()
-    print(code_map)
+    (code_map, default_code) = load_substitution_map()
 
     for file in base_keylayouts():
         k, name = load(file)
         lang = file.parent.name  # e.g. "en", "fr"
         print(name)
-        substitute_key_bind(k, '3', 'a')
+
+        bind = code_map.get(name) if name in code_map else default_code
+        substitute_key_bind(k,bind,'λ')
 
         out_dir = DIR_OUTPUT / lang
         out_dir.mkdir(parents=True, exist_ok=True)
