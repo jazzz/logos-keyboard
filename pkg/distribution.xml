@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <title>λ Keyboard</title>
+    <welcome file="welcome.html" mime-type="text/html"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <pkg-ref id="io.jazzz.logos-keyboard.keyboardlayout"/>
+    <options customize="never" require-scripts="false"/>
+    <domains enable_localSystem="false" enable_currentUserHome="true"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="io.jazzz.logos-keyboard.keyboardlayout"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="io.jazzz.logos-keyboard.keyboardlayout" visible="false">
+        <pkg-ref id="io.jazzz.logos-keyboard.keyboardlayout"/>
+    </choice>
+    <pkg-ref id="io.jazzz.logos-keyboard.keyboardlayout" onConclusion="none" auth="None">component.pkg</pkg-ref>
+</installer-gui-script>
