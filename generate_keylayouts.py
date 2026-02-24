@@ -45,12 +45,12 @@ def base_keylayouts():
 
 
 def scrub_illegal_chars(content):
-    """Replace XML-illegal character references with placeholders that survive ET parsing."""
+    """Replace all numeric character references with placeholders that survive ET parsing."""
     def placeholder(m):
-        return f'__UNICODECHAR_{m.group(1).upper()}__'
-    content = re.sub(r'&#x(000[0-8BCEFbcef]);', placeholder, content, flags=re.IGNORECASE)
-    content = re.sub(r'&#x(001[0-9A-Fa-f]);', placeholder, content, flags=re.IGNORECASE)
-    content = re.sub(r'&#x(007[Ff]);', placeholder, content, flags=re.IGNORECASE)
+        val = m.group(1)
+        code = int(val[1:], 16) if val[0] in 'xX' else int(val)
+        return f'__UNICODECHAR_{code:04X}__'
+    content = re.sub(r'&#(x[0-9A-Fa-f]+|[0-9]+);', placeholder, content)
     return content
 
 ## Returns Parsed Keylayout.
@@ -76,6 +76,7 @@ def write_file(path, root):
     ET.indent(root, space='    ')
     xml_str = ET.tostring(root, encoding='unicode')
     xml_str = restore_control_char_refs(xml_str)
+    xml_str = re.sub(r' />', '/>', xml_str)
     preamble = '<?xml version="1.1" encoding="UTF-8"?>\n<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">\n'
     with open(path, 'w', encoding='UTF-8') as f:
         f.write(preamble + xml_str)
