@@ -8,7 +8,7 @@
 
 -->
 <!--Last edited by Ukelele version 452 on 2026-02-17 at 22:55 (PST)-->
-<keyboard group="126" id="-22145" name="Canadian copy" maxout="1">
+<keyboard group="126" id="-22145" name="Canadian" maxout="1">
     <layouts>
         <layout first="0" last="17" mapSet="16c" modifiers="f4"/>
         <layout first="18" last="18" mapSet="984" modifiers="f4"/>
