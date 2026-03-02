@@ -2,7 +2,13 @@
 
 Are you tired of putting `Logos-` prefixes in front of every identifier? Do you want to be cool and use unicode characters where others think they shouldn't go?
 
-λKeyboard (pronounced `LOH-gohs keyboard`) allows you to type `λ` characters with ease. It adds the lowercase lambda character to existing keylayouts on mac, so it can be used easily. The character is bound to existing symbol key so there is no conflicts with shortcuts and the base layout is otherwise unchanged.
+λKeyboard (pronounced `LOH-gohs keyboard`) allows you to type `λ` characters with ease. It adds the lowercase lambda character to existing keylayouts on mac, so it can be used without requiring copy-pasting. The character is bound to existing symbol key so there is no conflicts with shortcuts and the base layout is otherwise unchanged.
+
+Layouts Included:
+- λ - Britsh
+- λ - Canadian
+- λ - Canadian - CSA
+
 
 # Use
 
@@ -37,11 +43,11 @@ Set the desired keyboard:
 
 ## Security Warnings
 
-MacOS treats all 3rd party Key layouts as potential key loggers and displays the following warning regardless of security implications.
+MacOS treats all 3rd party keylayouts as potential key loggers and displays the following warning regardless of security implications.
 
 ![alt text](.github/images/warning.png)
 
-The keylayout bundles used in this project contain only XML files which map, keycodes to characters. No code is executed or included in the bundle. There is no possible way for developers to access any of your data.
+The keylayout bundles used in this project contain only XML files which map, keycodes to characters. No code is executed or included in the bundle. Despiye warnings, developers cannot access any of your data.
 
 Installers and bundles are deterministic and reproducible. Building locally or downloading the installers will generate the exact same artifacts.
 
