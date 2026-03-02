@@ -11,7 +11,7 @@ ICON_SRC = Path("assets/logos.icns")
 BUNDLE_ID = "io.jazzz.keyboardlayout.logoskeyboard"
 
 def output_path(version):
-    return Path(f"build/{PROJECT_NAME}_v{version}.bundle/Contents")
+    return Path(f"build/{PROJECT_NAME}.bundle/Contents")
 
 def load_layout_metadata():
     """Derive layout name → language from generated_layouts/{lang}/*.keylayout."""
