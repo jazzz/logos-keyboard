@@ -90,6 +90,7 @@ if __name__ == "__main__":
         lang = file.parent.name  # e.g. "en", "fr"
         print(name)
 
+        k.set('name', f'λ - {name}')
         bind = code_map.get(name) if name in code_map else default_code
         substitute_key_bind(k,bind,'λ')
 

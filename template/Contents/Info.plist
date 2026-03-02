@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
 	<key>CFBundleIdentifier</key>
-	<string>io.jazzz.logos-keyboard.keyboardlayout</string>
+	<string>io.jazzz.keyboardlayout.logoskeyboard</string>
 	<key>CFBundleName</key>
 	<string>λKeyboard</string>
 	<key>CFBundleVersion</key>

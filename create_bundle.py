@@ -8,7 +8,7 @@ PROJECT_NAME = "λKeyboard"
 DIR_TEMPLATE = Path("template/Contents")
 DIR_LAYOUT = Path("generated_layouts")
 ICON_SRC = Path("assets/logos.icns")
-BUNDLE_ID = "io.jazzz.logos-keyboard.keyboardlayout"
+BUNDLE_ID = "io.jazzz.keyboardlayout.logoskeyboard"
 
 def output_path(version):
     return Path(f"build/{PROJECT_NAME}_v{version}.bundle/Contents")
@@ -36,7 +36,7 @@ def update_info_plist(layouts, version):
 
     # Add an entry for each generated layout
     for name, lang in layouts.items():
-        slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+        slug = re.sub(r"[^a-z0-9]+", "", name.lower()).strip("-")
         plist[f"KLInfo_{name}"] = {
             "TICapsLockLanguageSwitchCapable": False,
             "TISIconIsTemplate": False,
