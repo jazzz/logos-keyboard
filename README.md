@@ -23,11 +23,11 @@ Download the latest `pkg` from [releases](https://github.com/jazzz/logos-keyboar
 
 ### Using brew:
 
-`brew install jazzz/λKeyboard`
+`brew install --cask jazzz/logos-keyboard/logos-keyboard`
 
 ### Manually:
 
-`cp logos-keyboard_*.bundle ~/Library/Keyboard\ Layouts/`
+`cp λkeyboard.bundle ~/Library/Keyboard\ Layouts/`
 
 
 # Configuring 
