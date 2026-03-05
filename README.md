@@ -5,9 +5,14 @@ Are you tired of putting `Logos-` prefixes in front of every identifier? Do you 
 λKeyboard (pronounced `LOH-gohs keyboard`) allows you to type `λ` characters with ease. It adds the lowercase lambda character to existing keylayouts on mac, so it can be used without requiring copy-pasting. The character is bound to existing symbol key so there is no conflicts with shortcuts and the base layout is otherwise unchanged.
 
 Layouts Included:
-- λ - Britsh
-- λ - Canadian
-- λ - Canadian - CSA
+
+- **English**
+  - λ - Britsh
+  - λ - Canadian
+  - λ - U.S.
+
+- **Français**
+  - λ - Canadian - CSA
 
 
 # Use
@@ -16,6 +21,9 @@ Press `Option-L` to insert a `λ` where ever you feel like it.
 
 
 # Install
+
+1. Place `λKeyboard.bundle` in `~/Library/Keyboard Layouts`
+2. Restart your computer to detect new keylayouts 
 
 ### Using the Installer
 
@@ -26,6 +34,7 @@ Download the latest `pkg` from [releases](https://github.com/jazzz/logos-keyboar
 `brew install --cask jazzz/logos-keyboard/logos-keyboard`
 
 ### Manually:
+Download the latest `LogosKeyboard.bundle.zip` and unzip the contents. Then move the bundle to the installation folder
 
 `cp λkeyboard.bundle ~/Library/Keyboard\ Layouts/`
 
